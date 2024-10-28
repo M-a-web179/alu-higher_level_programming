@@ -1,4 +1,4 @@
-i#!/usr/bin/python3
+#!/usr/bin/python3
 # 4-square.py
 """This is module that
 that initializes an object using the __init__ method
