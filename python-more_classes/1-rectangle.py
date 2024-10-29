@@ -73,4 +73,4 @@ class Rectangle():
         except TypeError:
             raise
         except ValueError:
-            raise 
+            raise
