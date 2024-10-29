@@ -113,7 +113,7 @@ class Rectangle():
         """
         if self.width == 0 or self.height == 0:
             return ""
-[O        else:
+        else:
             string = ""
             for i in range(self.height):
                 for _ in range(self.width):
