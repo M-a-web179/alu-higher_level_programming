@@ -1,30 +1,28 @@
 #!/usr/bin/python3
+# 7-add_item.py
+"""This python script
+loads, adds, and save
+new elements to a json list
+serialized format
 """
-This module provides a script to add command line
-arguments to a list stored in a JSON file.
-"""
+
+
+import os
 import sys
-import importlib
-
-load_from_json_file = importlib.import_module(
-    "6-load_from_json_file"
-).load_from_json_file
-save_to_json_file = importlib.import_module(
-    "5-save_to_json_file"
-).save_to_json_file
 
 
-def add_item():
-    """
-    Adds command-line arguments to a list stored in a JSON file.
-    """
-    try:
-        arr = load_from_json_file("add_item.json")
-    except Exception:
-        arr = []
-    arr += sys.argv[1:]
-
-    save_to_json_file(arr, "add_item.json")
-
-
-add_item()
+load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
+save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+filename = "add_item.json"
+with open(filename, mode="a", encoding="utf-8"):
+    pass
+if os.path.getsize(filename) > 0:
+    list_data = load_from_json_file(filename)
+    for i in range(1, len(sys.argv)):
+        list_data.append(sys.argv[i])
+    save_to_json_file(list_data, filename)
+else:
+    list_data = []
+    for i in range(1, len(sys.argv)):
+        list_data.append(sys.argv[i])
+    save_to_json_file(list_data, filename)
